@@ -83,7 +83,7 @@ app.post('/api/books/:bookId/return', (req, res) => {
       res.sendStatus(404);
     })
     .then((book) => {
-      if (!book.checkedOut) res.sendStatus(409);
+      if (!book.dueDate) res.sendStatus(409);
       returnBook(bookId).then(res.sendStatus(200));
     })
     .catch(() => {});
